@@ -121,22 +121,61 @@ while (thereAreMore) {
 	}
 }
 
-alert("# of VICTIMS: " + victims.length + "\nNames: " + victims.map( function(item) { return item.name}).join(", ") + "\n\n# of VOLUNTEERS: " + volunteers.length + "\nNames: " + volunteers.map( function(item) { return item.name}).join(", "))
+alert("# of VICTIMS: " + victims.length + "\nNames: " + victims.map( function(item) { return item.name }).join(", ") + "\n\n# of VOLUNTEERS: " + volunteers.length + "\nNames: " + volunteers.map( function(item) { return item.name}).join(", "))
 
+
+// SOLUTION FOR PERSON IN NEED STREET MATCHING
+
+var personInNeed = prompt("Please enter the NAME of a person in need and we'll provide a list of volunteers on the same street.")
+
+var streetOfPersonInNeed = victims.filter( function(item) {
+	if (item.name === personInNeed) {
+		return item
+	}
+})
+
+var streetMatch = volunteers.filter( function(item) {
+ if (item.street === streetOfPersonInNeed[0].street) {
+  return item 
+}}).map(function(item) {
+  	return item.name
+  }).join(", ")
+
+if (streetMatch.length > 0) {
+	alert("The following volunteers live on the same street: \n" + streetMatch)
+} else {
+	alert("There are no volunteers living on that street. Sorry.")
+}
 
 // var victims = [
 // 	{name : "John",
-// 	phone : "123"},
+// 	phone : "123",
+// 	street: "main"},
 // 	{name : "Peter",
-// 	phone : "456"}
+// 	phone : "456",
+// 	street: "main"},
+// 	{name : "Brad",
+// 	phone : "456",
+// 	street: "other"}
 // ]
 
 // var volunteers = [
-// 	{name : "John",
-// 	phone : "123"},
-// 	{name : "Peter",
-// 	phone : "456"}
+// 	{name : "Betty",
+// 	phone : "123",
+// 	street: "main"},
+// 	{name : "Paul",
+// 	phone : "456",
+// 	street: "other"},
+// 	{name : "Steph",
+// 	phone : "123",
+// 	street: "main"}
 // ]
+
+
+
+
+
+
 
 
 
